@@ -1,25 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BsAlarm, BsAlarmFill } from "react-icons/bs";
+import { IconContext } from "react-icons";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <IconContext.Provider value={{ size: "10rem" }}>
+      <div className="App">
+        <BsAlarm color="green" size="1.5rem" />
+        <BsAlarmFill />
+      </div>
+    </IconContext.Provider>
   );
 }
 
