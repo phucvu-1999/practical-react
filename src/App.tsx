@@ -1,47 +1,31 @@
-import Tippy from "@tippy.js/react";
-import { forwardRef, LegacyRef } from "react";
+import { useState } from "react";
+import CountUp, { useCountUp } from "react-countup";
 import "tippy.js/dist/tippy.css";
 import "./App.css";
 
-const ColoredToolTip = () => {
-  return <span style={{ color: "yellow" }}>Yellow</span>;
-};
-
-const renderList = () => {
-  return (
-    <ul style={{ fontSize: "1rem" }}>
-      <li>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad totam
-        excepturi qui quas vel deserunt? Similique fuga quod cum. Facere
-        delectus est, quo dicta ipsum nobis consequatur mollitia corporis.
-        Sapiente?
-      </li>
-      <li>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad totam
-        excepturi qui quas vel deserunt? Similique fuga quod cum. Facere
-        delectus est, quo dicta ipsum nobis consequatur mollitia corporis.
-        Sapiente?
-      </li>
-      <li>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad totam
-        excepturi qui quas vel deserunt? Similique fuga quod cum. Facere
-        delectus est, quo dicta ipsum nobis consequatur mollitia corporis.
-        Sapiente?
-      </li>
-    </ul>
-  );
-};
-
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <div className="App">
-      <Tippy arrow={false} content={renderList()}>
-        <button>Hover Me !!!</button>
-      </Tippy>
+      <CountUp end={1000} />
+      <br />
+      <CountUp end={1000} duration={5} />
+      <br />
+      <CountUp start={100} end={1000} duration={10} />
 
-      <Tippy sticky duration={1000} content={<ColoredToolTip />}>
-        <p>Hi there</p>
-      </Tippy>
+      <br />
+      <h1>
+        <CountUp
+          decimals={2}
+          end={count}
+          duration={100}
+          prefix="$"
+          suffix="vnd"
+        />
+      </h1>
+
+      <button onClick={() => setCount(1000000)}>Add count</button>
     </div>
   );
 }
